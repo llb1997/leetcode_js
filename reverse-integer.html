@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var reverse = function(x) {
+            var str = x.toString();
+            let arr = str.split('');
+            if (arr[0] !== "-") {
+                // 120和123属于一种情况，因为Number会让021--->21
+                let num = Number(arr.reverse().join(''));
+                if (num <= 2147483647 && num >= -2147483648) {
+                    return num;
+                } else {
+                    return 0;
+                }
+            } else if (arr[0] === "-") {
+                delete arr[0];
+                let num = Number(arr.reverse().join(''));
+                if (num <= 2147483647 && num >= -2147483648) {
+                    return ~num + 1;
+                } else {
+                    return 0;
+                }
+            }
+        };
+        console.log(reverse(123) == 321);
+        console.log(reverse(-123) == -321);
+        console.log(reverse(120) == 21);
+    </script>
+</body>
+
+</html>
