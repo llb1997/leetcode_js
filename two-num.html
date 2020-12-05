@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
@@ -15,7 +16,6 @@
                     if (nums[i] + nums[k] == target) {
                         // console.log([i, k]);
                         console.log(typeof [i, k]);
-
                         return [i, k];
                     }
                 }
@@ -23,8 +23,10 @@
 
         };
         var sum = twoSum([2, 7, 11, 15], 9);
+        var two = [0, 1];
         console.log(typeof [0, 1]);
-        console.log(sum == [0, 1]);
+
+        console.log(JSON.stringify(sum) === JSON.stringify(two));
     </script>
 </body>
 
