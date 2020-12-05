@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var isPalindrome = function(x) {
+            if (x < 0) {
+                return false;
+            }
+            let temp = true;
+            x = x.toString()
+            for (let i = 0, len = x.length - 1; i < len / 2; i++) {
+                if (x[i] !== x[len - i]) {
+                    temp = false;
+                    break
+                }
+            }
+            return temp;
+        };
+        console.log(isPalindrome(121));
+        console.log(isPalindrome(-121));
+        console.log(isPalindrome(10));
+    </script>
+</body>
+
+</html>
