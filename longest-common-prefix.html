@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * @param {string[]} strs
+         * @return {string}
+         */
+        var longestCommonPrefix = function(strs) {
+            if (strs.length == 0) {
+                return "";
+            }
+            let arr = strs[0];
+            for (let i = 0; i < strs.length; i++) {
+                let j = 0;
+                for (; j < arr.length && j < (strs[i].length); j++) {
+                    if (arr[j] != strs[i][j]) {
+                        break
+                    }
+                }
+                arr = arr.substr(0, j);
+                if (arr === "") {
+                    return arr;
+                }
+            }
+            return arr;
+        };
+        console.log(longestCommonPrefix(["flower", "flow", "flight"])); //fl
+        console.log(longestCommonPrefix(["dog", "racecar", "car"])); //空
+    </script>
+</body>
+
+</html>
