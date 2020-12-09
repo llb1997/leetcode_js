@@ -5,28 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
 </head>
 
 <body>
+
+
+
+
+    <input type="text" value="[2, 7, 11, 15]" id="bar1">
+    <!-- 请输入需要验证的数组  请输入目标值-->
+    <input type="text" value="9" id="target">
+    <button>确认</button>
+    <div></div>
     <script>
+        var input = document.getElementById("bar1");
+        var input1 = document.getElementById("target");
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        // input = input.value;
+        // input1 = input1.value;
+
+        console.log(btn);
+        btn.onclick = function() {
+            // div.innerText = '2019-6-6';
+            console.log(typeof input.value.split(','), 999);
+            console.log(typeof parseInt(input1.value), 777);
+            console.log(input.value, 9);
+            console.log(input1.value, 7);
+
+            div.innerHTML = twoSum([2, 7, 11, 15], input1.value);
+        }
         var twoSum = function(nums, target) {
+
             for (var i = 0; i < nums.length; i++) {
+                // alert(nums); 
+                // alert(target); 
                 for (var k = i + 1; k < nums.length; k++) {
+
                     if (nums[i] + nums[k] == target) {
-                        // console.log([i, k]);
-                        console.log(typeof [i, k]);
+
                         return [i, k];
+                        // return i;
                     }
                 }
             }
 
         };
-        var sum = twoSum([2, 7, 11, 15], 9);
-        var two = [0, 1];
-        console.log(typeof [0, 1]);
+        // var sum = twoSum([2, 7, 11, 15], 9);
+        // console.log(sum, 1112222);
+        // var two = [0, 1];
+        // console.log(typeof [0, 1]);
 
-        console.log(JSON.stringify(sum) === JSON.stringify(two));
+        // console.log(JSON.stringify(sum) === JSON.stringify(two));
     </script>
 </body>
 
