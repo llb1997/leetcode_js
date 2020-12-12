@@ -12,28 +12,36 @@
 
 
 
-    <input type="text" value="请输入需要验证的数组" id="bar1">
+    <input type="text" value="请输入需要验证的数组2,7,11,15" id="bar1">
     <!-- 请输入需要验证的数组  请输入目标值-->
-    <input type="text" value="请输入目标值" id="target">
+    <input type="text" value="9" id="target">
     <button>确认</button>
     <div></div>
     <script>
-        var input = document.getElementById("bar1");
-        var input1 = document.getElementById("target");
         var btn = document.querySelector('button');
         var div = document.querySelector('div');
-        // input = input.value;
-        // input1 = input1.value;
 
+        // [2,7,11,15]
         console.log(btn);
         btn.onclick = function() {
-            // div.innerText = '2019-6-6';
-            console.log(typeof input.value.split(','), 999);
-            console.log(typeof parseInt(input1.value), 777);
-            console.log(input.value, 9);
-            console.log(input1.value, 7);
+            var input = document.getElementById("bar1");
+            var input1 = document.getElementById("target");
 
-            div.innerHTML = twoSum([2, 7, 11, 15], input1.value);
+            var input = input.value.split(',');
+            // console.log(typeof parseInt(input), 7);
+            // console.log(input);
+            var arr = [];
+            for (let i = 0; i < input.length; i++) {
+                arr[arr.length] = parseInt(input[i]);
+            }
+            console.log(Array.isArray(arr), 2);
+            console.log(arr[0].length, 3);
+
+            // console.log(typeof arr, 999);
+            // console.log(typeof parseInt(input1), 777);
+
+
+            div.innerHTML = twoSum(arr, input1.value);
         }
         var twoSum = function(nums, target) {
 
