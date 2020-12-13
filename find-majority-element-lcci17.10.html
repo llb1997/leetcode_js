@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var majorityElement = function(nums) {
+            if (nums.length == 0) {
+                return 0
+            }
+            if (nums.length == 1) {
+                return nums[0]
+            }
+            var obj = {};
+            // for (var i = 0; i < nums.length; i++) {
+            //     var chars = nums[i]; // chars 是 字符串的每一个字符
+            //     if (obj[chars]) { // o[chars] 得到的是属性值
+            //         obj[chars]++;
+            //     } else {
+            //         obj[chars] = 1;
+            //     }
+            // }
+            nums.forEach(item => {
+                obj[item] ? (obj[item]++) : (obj[item] = 1);
+            })
+
+
+            // 2. 遍历对象
+            var max = 1;
+            var ch = '';
+            for (var k in obj) {
+                // k 得到是 属性名
+                // o[k] 得到的是属性值
+                if (obj[k] > max) {
+                    max = obj[k];
+                    ch = k;
+                }
+            }
+            // 判断频率最大的是否大于字符串长度的一半
+            if (obj[ch] * 2 > nums.length) {
+                return ch;
+            } else {
+                return -1;
+            }
+        };
+        console.log(majorityElement([1, 2, 5, 9, 5, 9, 5, 5, 5])); //5
+        console.log(majorityElement([3, 2])); //-1
+    </script>
+</body>
+
+</html>

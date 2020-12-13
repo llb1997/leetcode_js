@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var sumOddLengthSubarrays = function(arr) {
+            let sum = 0
+            for (var i = 1; i <= arr.length; i += 2) {
+                for (var j = 0; j <= arr.length - i; j++) {
+                    sum += arr.slice(j, j + i).reduce((prev, next) => prev + next)
+                }
+            }
+            return sum
+        };
+        console.log(sumOddLengthSubarrays([1, 4, 2, 5, 3])); //58
+        console.log(sumOddLengthSubarrays([1, 2])); //3
+        console.log(sumOddLengthSubarrays([10, 11, 12])); //66
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var maximumProduct = function(nums) {
+            nums.sort(function(a, b) {
+                return a - b;
+            });
+            let len = nums.length;
+            a = nums[len - 1] * nums[len - 2] * nums[len - 3];
+            b = nums[0] * nums[1] * nums[len - 1];
+            return a > b ? a : b;
+        };
+        console.log(maximumProduct([1, 2, 3]));
+        console.log(maximumProduct([1, 2, 3, 4]));
+    </script>
+</body>
+
+</html>
