@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 500px;
+            height: 400px;
+            margin: 100px auto;
+        }
+        
+        input {
+            display: block;
+            margin: 20px;
+            width: 300px;
+            height: 40px;
+            font-size: 20px;
+            border: 1px solid skyblue;
+        }
+        
+        button {
+            margin-left: 70px;
+            margin-bottom: 20px;
+            width: 70px;
+            height: 40px;
+            border: 1px solid blueviolet;
+            background-color: green;
+            color: blanchedalmond;
+        }
+        
+        .result {
+            width: 200px;
+            height: 20px;
+            margin-left: 20px;
+            color: rgb(0, 162, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <input type="text" value="请输入需要验证的数组0, 1, 2, 4, 5, 7" id="bar1">
+        <!-- 请输入需要验证的数组  请输入目标值-->
+        <!-- <input type="text" value="3" id="target"> -->
+        <button>确认</button>
+        <div class="result"></div>
+    </div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('.result');
+
+        console.log(btn);
+        btn.onclick = function() {
+            var input = document.getElementById("bar1");
+
+
+            var input = input.value.split(',');
+
+            var arr = [];
+            for (let i = 0; i < input.length; i++) {
+                arr[arr.length] = parseInt(input[i]);
+            }
+            console.log(Array.isArray(arr), 2);
+            console.log(arr[0].length, 3);
+
+            div.innerHTML = summaryRanges(arr);
+        }
+        var summaryRanges = function(nums) {
+            if (nums == []) {
+                return []
+            }
+            if (nums == [-1]) {
+                return ["-1"]
+            }
+            if (nums == [0]) {
+                return ["0"]
+            }
+            var newList = [];
+            for (let i = 0; i < nums.length; i++) {
+                let index = i;
+                let tempt = nums[i];
+                while (index + 1 < nums.length && nums[index + 1] == nums[index] + 1) {
+                    index++;
+                }
+                if (index == i) {
+                    newList.push(nums[i] + '');
+                } else {
+                    newList.push(nums[i] + '->' + nums[index]);
+                    i = index;
+                }
+            }
+            return newList;
+        };
+        // console.log(summaryRanges([0, 1, 2, 4, 5, 7])); //["0->2","4->5","7"]
+        // console.log(summaryRanges([0, 2, 3, 4, 6, 8, 9])); //["0","2->4","6","8->9"]
+        // console.log(summaryRanges([])); //[]
+        // console.log(summaryRanges([-1])); //["-1"]
+        // console.log(summaryRanges([0])); //["0"]
+    </script>
+</body>
+
+</html>
