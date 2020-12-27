@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 500px;
+            height: 400px;
+            margin: 100px auto;
+        }
+        
+        input {
+            display: block;
+            margin: 20px;
+            width: 300px;
+            height: 40px;
+            font-size: 20px;
+            border: 1px solid skyblue;
+        }
+        
+        button {
+            margin-left: 70px;
+            margin-bottom: 20px;
+            width: 70px;
+            height: 40px;
+            border: 1px solid blueviolet;
+            background-color: green;
+            color: blanchedalmond;
+        }
+        
+        .result {
+            width: 200px;
+            height: 20px;
+            margin-left: 20px;
+            color: rgb(0, 162, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <input type="text" id="bar1" placeholder="请输入需要验证的数组">
+        <!-- 请输入需要验证的数组  请输入目标值-->
+        <!-- <input type="text" value="1" id="target"> -->
+        <button class="btn1">确认</button>
+        <button class="btn2">清空</button>
+        <div class="result"></div>
+    </div>
+    <script>
+        var btn1 = document.querySelector('.btn1');
+        var btn2 = document.querySelector('.btn2');
+        var div = document.querySelector('.result');
+        var input = document.getElementById("bar1");
+
+        // console.log(btn);
+        btn1.onclick = function() {
+            var input = document.getElementById("bar1");
+            // var input1 = document.getElementById("target");
+
+            var input = input.value.split(',');
+
+            var arr = [];
+            for (let i = 0; i < input.length; i++) {
+                arr[arr.length] = parseInt(input[i]);
+            }
+            console.log(Array.isArray(arr), 2);
+            console.log(arr[0].length, 3);
+
+            div.innerHTML = canMakeArithmeticProgression(arr);
+        }
+        btn2.onclick = function() {
+            input.value = "";
+        }
+
+        var canMakeArithmeticProgression = function(arr) {
+            arr.sort(function(a, b) {
+                return a - b;
+            })
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i + 1] - arr[i] != arr[i + 2] - arr[i + 1] && i < arr.length - 2) {
+                    return false
+                }
+            }
+            return true
+        };
+        // console.log(canMakeArithmeticProgression([3, 5, 1]));//ture
+        // console.log(canMakeArithmeticProgression([1, 2, 4]));//false
+    </script>
+</body>
+
+</html>
