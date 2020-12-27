@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var maximumWealth = function(accounts) {
+            var a = [];
+            var max = 0;
+            for (var i = 0; i < accounts.length; i++) {
+                sum = 0;
+                for (var j = 0; j < accounts[i].length; j++) {
+                    sum += accounts[i][j];
+                    // console.log(sum, 111);
+                    a[i] = sum;
+                    // console.log(a[i], 222);
+                    if (a[i] > max) {
+                        max = a[i];
+                    }
+                }
+            }
+            // console.log(max);
+            return max
+        };
+        console.log(maximumWealth([
+            [1, 2, 3],
+            [3, 2, 1]
+        ])); //6
+        console.log(maximumWealth([
+            [1, 5],
+            [7, 3],
+            [3, 5]
+        ])); //10
+    </script>
+</body>
+
+</html>
