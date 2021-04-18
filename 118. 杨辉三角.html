@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var generate = function (numRows) {
+            const row = [];
+            if (numRows <= 0) {
+                return row;
+            }
+            // numRows代表有多少行
+            for (let i = 0; i < numRows; i++) {
+                // 创建了一个全为1，长为i+1的列表
+                const List = new Array(i + 1).fill(1);
+                // 将List的第j项替换成row[i-1][j-1]+row[i-1][j]
+                for (let j = 1; j < List.length - 1; j++) {
+                    List[j] = row[i - 1][j - 1] + row[i - 1][j];
+                }
+                row.push(List);
+            }
+            return row;
+        };
+        console.log(generate(5));
+                // [
+            //  [1],
+            // [1,1],
+        //    [1,2,1],
+        //   [1,3,3,1],
+        //  [1,4,6,4,1]
+        // ]
+    </script>
+</body>
+
+</html>
